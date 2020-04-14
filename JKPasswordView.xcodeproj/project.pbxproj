@@ -15,6 +15,8 @@
 		24AF65F824382E29009A2162 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24AF65F624382E29009A2162 /* LaunchScreen.storyboard */; };
 		24AF65FB24382E29009A2162 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AF65FA24382E29009A2162 /* main.m */; };
 		24AF660324384773009A2162 /* PasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AF660224384773009A2162 /* PasswordView.m */; };
+		756866B52445451E00284FF4 /* PasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 756866B42445451E00284FF4 /* PasswordVC.m */; };
+		756866B824455F2300284FF4 /* JKPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 756866B724455F2300284FF4 /* JKPasswordView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		24AF65FA24382E29009A2162 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24AF660124384773009A2162 /* PasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordView.h; sourceTree = "<group>"; };
 		24AF660224384773009A2162 /* PasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordView.m; sourceTree = "<group>"; };
+		756866B32445451E00284FF4 /* PasswordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordVC.h; sourceTree = "<group>"; };
+		756866B42445451E00284FF4 /* PasswordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordVC.m; sourceTree = "<group>"; };
+		756866B624455F2300284FF4 /* JKPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKPasswordView.h; sourceTree = "<group>"; };
+		756866B724455F2300284FF4 /* JKPasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKPasswordView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +76,12 @@
 				24AF65EC24382E22009A2162 /* SceneDelegate.m */,
 				24AF65EE24382E22009A2162 /* ViewController.h */,
 				24AF65EF24382E22009A2162 /* ViewController.m */,
+				756866B32445451E00284FF4 /* PasswordVC.h */,
+				756866B42445451E00284FF4 /* PasswordVC.m */,
 				24AF660124384773009A2162 /* PasswordView.h */,
 				24AF660224384773009A2162 /* PasswordView.m */,
+				756866B624455F2300284FF4 /* JKPasswordView.h */,
+				756866B724455F2300284FF4 /* JKPasswordView.m */,
 				24AF65F124382E22009A2162 /* Main.storyboard */,
 				24AF65F424382E29009A2162 /* Assets.xcassets */,
 				24AF65F624382E29009A2162 /* LaunchScreen.storyboard */,
@@ -156,6 +166,8 @@
 				24AF65FB24382E29009A2162 /* main.m in Sources */,
 				24AF660324384773009A2162 /* PasswordView.m in Sources */,
 				24AF65ED24382E22009A2162 /* SceneDelegate.m in Sources */,
+				756866B824455F2300284FF4 /* JKPasswordView.m in Sources */,
+				756866B52445451E00284FF4 /* PasswordVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

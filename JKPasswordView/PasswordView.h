@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)passWordBeginInput:(PasswordView *)password;
 
+-(void)deleteWhenEmpty:(PasswordView *)password;
+
 @end
 
 @interface PasswordView : UIView<UIKeyInput>

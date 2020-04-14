@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "PasswordView.h"
+#import "PasswordVC.h"
 
 #define Color_RGB(a,b,c,d) [UIColor colorWithRed:(a)/255.0 green:(b)/255.0 blue:(c)/255.0 alpha:(d)]
 #define GrayColor  Color_RGB(236,236,236,1)//headerView 灰
@@ -38,7 +39,7 @@
 
     self.view.backgroundColor = GrayColor;
     self.alphaView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    self.dataArray = [NSMutableArray arrayWithObjects:@"修改提现密码",@"忘记提现密码", nil];
+    self.dataArray = [NSMutableArray arrayWithObjects:@"修改提现密码", @"忘记提现密码", @"设置密码", nil];
     [self initSubview];
 }
 
@@ -55,7 +56,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return self.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,8 +77,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    self.integer = 1;
-    [self initAlphaViewAndString:@"请输入原提现密码"];
+    if (indexPath.row == 0) {
+        self.integer = 1;
+        [self initAlphaViewAndString:@"请输入原提现密码"];
+    } else if (indexPath.row == 2) {
+        [self presentViewController:[PasswordVC new] animated:YES completion:nil];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

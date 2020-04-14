@@ -32,15 +32,13 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.textStore = [NSMutableString string];
-        self.squareWidth = frame.size.width/6.0;
-        self.squareHeight = frame.size.height;
-        
         self.passWordNum = 6;
         self.pointRadius = 6;
+        self.textStore = [NSMutableString string];
         self.rectColor = LineGrayColor;
         self.pointColor = BlackColor;
-//        [self becomeFirstResponder];
+        
+        self.backgroundColor = [UIColor whiteColor];
     }
     
     return  self;
@@ -78,6 +76,7 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
 
 -(BOOL)becomeFirstResponder
 {
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
     if ([self.delegate respondsToSelector:@selector(passWordBeginInput:)]) {
         [self.delegate passWordBeginInput:self];
     }
@@ -91,6 +90,20 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
  */
 -(BOOL)canBecomeFirstResponder
 {
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    [self setNeedsDisplay];
+    return YES;
+}
+
+- (BOOL)canResignFirstResponder {
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    return YES;
+}
+- (BOOL)resignFirstResponder {
+    NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
+    [super resignFirstResponder];
+    [self setNeedsDisplay];
+
     return YES;
 }
 
@@ -149,6 +162,10 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
         if ([self.delegate respondsToSelector:@selector(passWordDidChange:)]) {
             [self.delegate passWordDidChange:self];
         }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(deleteWhenEmpty:)]) {
+            [self.delegate deleteWhenEmpty:self];
+        }
     }
     
     [self setNeedsDisplay];
@@ -156,17 +173,20 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
 
 -(void)drawRect:(CGRect)rect
 {
+    self.squareWidth = rect.size.width/6.0;
+    self.squareHeight = rect.size.height;
+    
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    CGContextSetLineWidth(context, 0.5);
-    CGContextSetStrokeColorWithColor(context, [UIColor lightGrayColor].CGColor);
+    //画外框
+    CGContextSetLineWidth(context, 2);
+    CGContextSetStrokeColorWithColor(context, self.rectColor.CGColor);
     CGContextAddRect(context, rect);
     CGContextDrawPath(context, kCGPathStroke);
     
     CGFloat x = 0;
     CGFloat y = 0;
-    //画外框
-    CGContextSetLineWidth(context, 0.5);
+    CGContextSetLineWidth(context, 1);
     CGContextSetStrokeColorWithColor(context, self.rectColor.CGColor);
     //画竖条
     for (int i = 1; i < self.passWordNum; i ++) {
@@ -189,7 +209,7 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
         return;
     }
     
-    int num = self.textStore.length;
+    NSUInteger num = self.textStore.length;
     if (num >= self.passWordNum) {
         return;
     }
@@ -198,12 +218,6 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
     CGRect hightlightRect = CGRectMake(num * _squareWidth + x + 0.5, y + 0.5, _squareWidth - 1, _squareHeight - 1);
     CGContextAddRect(context, hightlightRect);
     CGContextDrawPath(context, kCGPathStroke);
-    
-    
-    
-
 }
-
-
 
 @end
